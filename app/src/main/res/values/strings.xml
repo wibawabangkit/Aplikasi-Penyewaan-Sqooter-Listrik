@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">GO-PED WHEELS</string>
+    <string name="button_not_register">Tidak memiliki akun? <font color='red'>Daftar Sekarang</font></string>
+    <string name="after_register">Sudah memiliki akun? <font color='red'>Login Sekarang</font></string>
+    <string name="batal">Batal</string>
+    <string name="keluar">Keluar</string>
+    <string name="author">© WIBAWA BANGKIT 2020</string>
+    <string name="FormSw">DATA PENYEWA</string>
+    <string name="Formoto">DATA OTOPED</string>
+    <string name="jrk">Pilih Jarak (KM)</string>
+    <string name="brt">Pilih Berat Badan Anda (Kg)</string>
+    <string name="tgl">WAKTU PENYEWAAN</string>
+    <string name="isitgl">Masukan Tanggal Sekarang </string>
+    <string name="hargahistory">Rp. 80.000</string>
+    <string name="totalhistory">Total Harga :</string>
+    <string name="buttonsewa">SEWA SEKARANG</string>
+    <string name="umur">Pilih Status Usia Anda</string>
+    <string name="lama">Pilih Lama Penyewaan (Jam)</string>
+    <string name="judulprosedur">Prosedur Penyewaan</string>
+    <string name="dtpenyewa">Data Penyewa</string>
+    <string name="fieldnamapenyewa">Nama :</string>
+    <string name="fieldemail">Email :</string>
+    <string name="simplename">admin</string>
+    <string name="simpleemail">admin@gmail.com</string>
+    <string name="tglhistory">18 Juni 2020</string>
+    <string name="pesanhistory">Berhasil melakukan sewa dengan jarak 2 Km dan waktu sewa 2 Jam pada tanggal 16 Juni 2020.</string>
+    <string name="isi1">1.Penyewa yang sudah mengisi form penyewaan</string>
+    <string name="isi2">2.Otoped terdiri dari 2 Jenis</string>
+    <string name="isi3">3.Otoped yang harga Rp.20.000 untuk otoped yang besar</string>
+    <string name="isi4">4.Otoped yang harga Rp.15.000 untuk otoped yang kecil</string>
+    <string name="isi5">5.Penggunaan otoped dianjurkan dengan sesuai prosedur</string>
+    <string name="isi6">6.Penggunaan yang benar guna merawat keamanan otoped wheels</string>
+</resources>
