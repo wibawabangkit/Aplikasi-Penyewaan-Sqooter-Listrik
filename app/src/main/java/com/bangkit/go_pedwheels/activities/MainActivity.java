@@ -6,13 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bangkit.go_pedwheels.R;
 import com.bangkit.go_pedwheels.adapter.AlertDialogManager;
 import com.bangkit.go_pedwheels.session.SessionManager;
+
+import java.util.Calendar;
+import java.util.Date;
 
 /** By Wibawa Bangkit on Tahun 2020
  *  Penyewaan Otoped  Wheels Berdasarkan Metode TOPSIS
@@ -22,11 +29,15 @@ public class MainActivity extends AppCompatActivity {
     AlertDialogManager alert = new AlertDialogManager();
     SessionManager session;
     Button btnLogout;
+    String hariIni;
+    TextView today;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        today = findViewById(R.id.tvDate);
+
 
         session = new SessionManager(getApplicationContext());
         session.checkLogin();
@@ -49,6 +60,28 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
+
+        Date dateNow = Calendar.getInstance().getTime();
+        hariIni = (String) DateFormat.format("EEEE", dateNow);
+        if (hariIni.equalsIgnoreCase("sunday")) {
+            hariIni = "Minggu";
+        } else if (hariIni.equalsIgnoreCase("monday")) {
+            hariIni = "Senin";
+        } else if (hariIni.equalsIgnoreCase("tuesday")) {
+            hariIni = "Selasa";
+        } else if (hariIni.equalsIgnoreCase("wednesday")) {
+            hariIni = "Rabu";
+        } else if (hariIni.equalsIgnoreCase("thursday")) {
+            hariIni = "Kamis";
+        } else if (hariIni.equalsIgnoreCase("friday")) {
+            hariIni = "Jumat";
+        } else if (hariIni.equalsIgnoreCase("saturday")) {
+            hariIni = "Sabtu";
+        }
+
+        getToday();
+
+
     }
 
     public void profileMenu(View v) {
@@ -69,5 +102,42 @@ public class MainActivity extends AppCompatActivity {
     public void Persyaratan(View v) {
         Intent persyaratan = new Intent(this, ProsedurActivity.class);
         startActivity(persyaratan);
+    }
+
+    private void getToday() {
+        Date date = Calendar.getInstance().getTime();
+        String DATE = (String) DateFormat.format("d", date);
+        String monthNumber = (String) DateFormat.format("M", date);
+        String year = (String) DateFormat.format("yyyy", date);
+
+        int bulan = Integer.parseInt(monthNumber);
+        String nama = null;
+        if (bulan == 1) {
+            nama = "Januari";
+        } else if (bulan == 2) {
+            nama = "Februari";
+        } else if (bulan == 3) {
+            nama = "Maret";
+        } else if (bulan == 4) {
+            nama = "April";
+        } else if (bulan == 5) {
+            nama = "Mei";
+        } else if (bulan == 6) {
+            nama = "Juni";
+        } else if (bulan == 7) {
+            nama = "Juli";
+        } else if (bulan == 8) {
+            nama = "Agustus";
+        } else if (bulan == 9) {
+            nama = "September";
+        } else if (bulan == 10) {
+            nama = "Oktober";
+        } else if (bulan == 11) {
+            nama = "November";
+        } else if (bulan == 12) {
+            nama = "Desember";
+        }
+        String formatFix = hariIni + ", " + DATE + " " + nama + " " + year;
+        today.setText(formatFix);
     }
 }
