@@ -8,9 +8,7 @@ public class HistoryModel {
     private String mTotal;
     private int mImageResourceId;
     private static final int NO_IMAGE_PROVIDED = -1;
-    /** By Wibawa Bangkit on Tahun 2020
-     *  Penyewaan Otoped  Wheels Berdasarkan Metode TOPSIS
-     */
+
     public HistoryModel(String idSewa, String tanggal, String riwayat, String total, int imageResourceId) {
         mIdsewa = idSewa;
         mTanggal = tanggal;
@@ -18,6 +16,8 @@ public class HistoryModel {
         mTotal = total;
         mImageResourceId = imageResourceId;
     }
+
+
 
     public String getIdsewa() {
         return mIdsewa;

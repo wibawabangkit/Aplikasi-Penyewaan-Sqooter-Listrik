@@ -1,4 +1,4 @@
-package com.bangkit.go_pedwheels.activities;
+package com.bangkit.go_pedwheels.Activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,13 +19,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bangkit.go_pedwheels.R;
-import com.bangkit.go_pedwheels.adapter.AlertDialogManager;
-import com.bangkit.go_pedwheels.database.DatabaseHelper;
-import com.bangkit.go_pedwheels.session.SessionManager;
+import com.bangkit.go_pedwheels.Activities.admin.HomeAdmin;
+import com.bangkit.go_pedwheels.Activities.user.MainActivity;
+import com.bangkit.go_pedwheels.Adapter.AlertDialogManager;
+import com.bangkit.go_pedwheels.Database.DatabaseHelper;
+import com.bangkit.go_pedwheels.Session.SessionManager;
 
-/** By Wibawa Bangkit on Tahun 2020
- *  Penyewaan Otoped  Wheels Berdasarkan Metode TOPSIS
- */
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText txtUsername, txtPassword;
@@ -33,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     SessionManager session;
     DatabaseHelper dbHelper;
     SQLiteDatabase db;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.masuk);
         btnRegister = findViewById(R.id.ke_daftar);
 
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -71,17 +74,21 @@ public class LoginActivity extends AppCompatActivity {
                     if (username.trim().length() > 0 && password.trim().length() > 0) {
                         dbHelper.open();
 
-                        if (dbHelper.Login(username, password)) {
+                        if (dbHelper.checkUserAsAdmin(username, password)) {
                             session.createLoginSession(username);
-
+                            Toast.makeText(getApplicationContext(), "Hallo Admin", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), HomeAdmin.class).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP));
                             finish();
-                            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(i);
 
+                        } else if (dbHelper.Login(username, password)) {
+                                session.createLoginSession(username);
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP));
+                            finish();
+                            Log.d("XXXTAG", "masuk - context: " + getApplicationContext());
                         } else {
                             alert.showAlertDialog(LoginActivity.this, "Login gagal..", "Email atau Password salah!", false);
-
                         }
+
                     } else {
                         alert.showAlertDialog(LoginActivity.this, "Login gagal..", "Form tidak boleh kosong!", false);
                     }
@@ -98,6 +105,14 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        if (session.isLoggedIn() && !session.getEmail().equals("admin@goped.com")) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP));
+            finish();
+        } else if (session.isLoggedIn() && session.getEmail().equals("admin@goped.com")) {
+            startActivity(new Intent(getApplicationContext(), HomeAdmin.class).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP));
+            finish();
+        }
     }
 
     public static void setWindowFlag(Activity activity, final int bits, boolean on) {

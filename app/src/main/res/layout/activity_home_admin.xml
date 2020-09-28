@@ -17,23 +17,13 @@
         <RelativeLayout
             android:id="@+id/rlAppName"
             android:layout_width="wrap_content"
-            android:layout_height="37dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="start|center">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:id="@+id/call"
-                android:foregroundGravity="left"
-                android:paddingLeft="10dp"
-                android:src="@drawable/twotone_call_black_18dp" />
-
             <TextView
-                android:id="@+id/textcall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:paddingLeft="20dp"
                 android:layout_marginStart="15dp"
                 android:text="@string/app_name"
                 android:textColor="@android:color/white"
@@ -88,46 +78,7 @@
         android:paddingRight="16dp"
         android:paddingBottom="8dp">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:onClick="profileMenu"
-            android:orientation="vertical"
-            android:padding="16dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="3dp"
-            app:strokeColor="@color/biru"
-            app:strokeWidth="2dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-
-                <ImageView
-                    android:id="@+id/imgProfile"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/profile" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/imgProfile"
-                    android:layout_marginTop="15dp"
-                    android:gravity="center"
-                    android:text="PROFILE"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    android:textColor="#F44336"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
@@ -135,7 +86,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="historyMenu"
+            android:onClick="historyMenuadmin"
             android:orientation="vertical"
             android:padding="16dp"
             app:cardCornerRadius="10dp"
@@ -188,7 +139,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="MenuSewa"
+            android:onClick="MenuTotalSewa"
             android:orientation="vertical"
             android:padding="16dp"
             app:cardCornerRadius="10dp"
@@ -216,7 +167,7 @@
                     android:layout_below="@+id/imgsewa"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="SEWA\nOTOPED WHEELS"
+                    android:text=" TOTAL SEWA\nOTOPED WHEELS"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:textColor="#07171E"
                     android:textStyle="bold" />

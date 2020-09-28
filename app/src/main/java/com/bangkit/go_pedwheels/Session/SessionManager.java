@@ -1,17 +1,16 @@
-package com.bangkit.go_pedwheels.session;
+package com.bangkit.go_pedwheels.Session;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 
-import com.bangkit.go_pedwheels.activities.LoginActivity;
+import com.bangkit.go_pedwheels.Activities.LoginActivity;
 
 import java.util.HashMap;
 
-/** By Wibawa Bangkit on Tahun 2020
- *  Penyewaan Otoped  Wheels Berdasarkan Metode TOPSIS
- */
+
 public class SessionManager {
 
     SharedPreferences pref;
@@ -61,7 +60,6 @@ public class SessionManager {
 
         editor.clear();
         editor.commit();
-
         Intent i = new Intent(context, LoginActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -70,5 +68,17 @@ public class SessionManager {
 
     public boolean isLoggedIn() {
         return pref.getBoolean(IS_LOGIN, false);
+    }
+
+    public String getEmail() {
+        HashMap<String, String> user = getUserDetails();
+        Log.d("XXXTAG", "getEmail " + user.get(SessionManager.KEY_EMAIL));
+        return user.get(SessionManager.KEY_EMAIL);
+    }
+
+    public void destroyCurrentUser() {
+        editor.putBoolean(IS_LOGIN, false);
+        editor.putString(KEY_EMAIL, "");
+        editor.commit();
     }
 }

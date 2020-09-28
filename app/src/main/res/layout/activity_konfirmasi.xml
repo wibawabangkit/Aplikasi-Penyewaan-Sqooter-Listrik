@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/biru"
+    tools:context=".Activities.user.KonfirmasiActivity">
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingBottom="40dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/textGrid"
+                    android:text="PEMBAYARAN"
+                    android:textSize="34sp"
+                    android:textStyle="bold"
+                    android:paddingTop="40dp"
+                    android:paddingBottom="35dp"
+                    android:textColor="@android:color/white"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+            <GridLayout
+                android:id="@+id/mainGrid"
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
+                android:layout_weight="1"
+                android:alignmentMode="alignMargins"
+                android:columnCount="1"
+                android:columnOrderPreserved="true"
+                android:padding="14dp"
+                android:paddingBottom="20dp"
+                android:rowCount="2">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="155dp"
+                    android:layout_columnWeight="0.5"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp">
+
+                    <RelativeLayout
+                        android:id="@+id/relativ1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imagebankBRI"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/bri" />
+
+                        <TextView
+                            android:id="@+id/annamaBRI"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/imagebankBRI"
+                            android:layout_toRightOf="@+id/imagebankBRI"
+                            android:paddingTop="15dp"
+                            android:text="A/N PT MUHAMMAD RIFQI FIRMANSYAH"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/NorekBRI"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/annamaBRI"
+                            android:layout_toEndOf="@+id/imagebankBRI"
+                            android:layout_toRightOf="@+id/imagebankBRI"
+                            android:paddingTop="5dp"
+                            android:text="078501026705638"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textIsSelectable="true"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+                <!-- Column 2 -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/DetailPembayaran"
+                    android:layout_width="0dp"
+                    android:layout_height="152dp"
+                    android:layout_columnWeight="0.5"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp">
+
+                    <RelativeLayout
+                        android:id="@+id/relativ2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imagebankBCA"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/bcaa" />
+
+                        <TextView
+                            android:id="@+id/annamaBCA"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/imagebankBCA"
+                            android:layout_toRightOf="@+id/imagebankBCA"
+                            android:paddingTop="15dp"
+                            android:text="A/N PT MUHAMMAD RIFQI FIRMANSYAH"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/nomorrekeningbri"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/annamaBCA"
+                            android:layout_toEndOf="@+id/imagebankBCA"
+                            android:layout_toRightOf="@+id/imagebankBCA"
+                            android:paddingTop="5dp"
+                            android:text="2740022469"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textIsSelectable="true"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </GridLayout>
+
+
+            <Button
+                android:id="@+id/backhome"
+                android:layout_width="285dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:textColorHint="@color/black"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="#3F51B5"
+                android:paddingLeft="80dp"
+                android:paddingRight="80dp"
+                android:text="Kembali Beranda"
+                android:textSize="13dp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/upload"
+                android:layout_width="285dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="#3F51B5"
+                android:text="konfirmasi pembayaran"
+                android:textColor="#F8F3F3F3" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</ScrollView>

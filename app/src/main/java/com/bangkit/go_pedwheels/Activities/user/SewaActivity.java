@@ -1,4 +1,4 @@
-package com.bangkit.go_pedwheels.activities;
+package com.bangkit.go_pedwheels.Activities.user;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -21,15 +22,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bangkit.go_pedwheels.R;
-import com.bangkit.go_pedwheels.database.DatabaseHelper;
-import com.bangkit.go_pedwheels.session.SessionManager;
+import com.bangkit.go_pedwheels.Database.DatabaseHelper;
+import com.bangkit.go_pedwheels.Session.SessionManager;
 
 import java.util.Calendar;
 import java.util.HashMap;
-/** By Wibawa Bangkit on Tahun 2020
- *  Penyewaan Otoped  Wheels Berdasarkan Metode TOPSIS
- */
+
 public class SewaActivity extends AppCompatActivity {
+    //variabel
     protected Cursor cursor;
     DatabaseHelper dbHelper;
     SQLiteDatabase db;
@@ -47,20 +47,23 @@ public class SewaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sewa);
+        //cpnfig database
         dbHelper = new DatabaseHelper(SewaActivity.this);
         db = dbHelper.getReadableDatabase();
 
-
+        //array
         final String[] Usia = {"0","Anak", "Dewasa"};
         final String[] Berat = {"0","40-50", "50-55", "55-60", "60-65", "65-70"};
         final String[] Waktu = {"0","1", "2", "3", "4", "5"};
         final String[] Jarak = {"0","1", "2", "3", "4", "5"};
 
+        //spinner sewa
         spinUsia = findViewById(R.id.umur);
         spinBerat = findViewById(R.id.berat);
         spinWaktu = findViewById(R.id.lamasewa);
         spinJarak = findViewById(R.id.jarak);
 
+        //deklarasi spiner
         ArrayAdapter<CharSequence> adapterUmur = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, Usia);
         adapterUmur.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinUsia.setAdapter(adapterUmur);
@@ -77,6 +80,7 @@ public class SewaActivity extends AppCompatActivity {
         adapterJarak.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinJarak.setAdapter(adapterJarak);
 
+        //Pemanggilan spinner
         spinUsia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -88,19 +92,17 @@ public class SewaActivity extends AppCompatActivity {
 
             }
         });
-
+        //Pemanggilan spinner
         spinBerat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 sBerat = parent.getItemAtPosition(position).toString();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
-
+        //Pemanggilan spinner
         spinWaktu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -112,7 +114,7 @@ public class SewaActivity extends AppCompatActivity {
 
             }
         });
-
+        //Pemanggilan spinner
         spinJarak.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -125,19 +127,27 @@ public class SewaActivity extends AppCompatActivity {
             }
         });
 
+        //deklarasi variabel btnSewa, etTanggal
         Button btnSewa = findViewById(R.id.btnsewa);
         etTanggal = findViewById(R.id.tanggal_sewa);
         etTanggal.setInputType(InputType.TYPE_NULL);
         etTanggal.requestFocus();
+
+        //config database
         session = new SessionManager(getApplicationContext());
         HashMap<String, String> user = session.getUserDetails();
         email = user.get(SessionManager.KEY_EMAIL);
+
+        //parameter
         setDateTimeField();
 
+        //isi variabel  btnSewa
         btnSewa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //parameter  perhitunganHarga
                 perhitunganHarga();
+                //jika memilih "0" maka akan muncul notifikasi "Isi Dengan Benar !"
                 if (sUsia != null && sBerat != null && sWaktu != null && sJarak != null && sTanggal != null) {
                     if ((sUsia.equalsIgnoreCase("0"))
                             || (sBerat.equalsIgnoreCase("0"))
@@ -146,6 +156,7 @@ public class SewaActivity extends AppCompatActivity {
                             ) {
                         Toast.makeText(SewaActivity.this, "Isi Dengan Benar !", Toast.LENGTH_LONG).show();
                     } else {
+                        //Jika selesai mengisi form, maka akan tampil warning  "Ingin Sewa dan lihat advice otoped diprosedur penyewaan?"
                         AlertDialog dialog = new AlertDialog.Builder(SewaActivity.this)
                                 .setTitle("Ingin Sewa dan lihat advice otoped diprosedur penyewaan?")
                                 .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
@@ -170,6 +181,9 @@ public class SewaActivity extends AppCompatActivity {
                                                     harga + "','" +
                                                     hargaTotal + "');");
                                             Toast.makeText(SewaActivity.this, "Sewa berhasil", Toast.LENGTH_LONG).show();
+                                            Intent konfirmasi_pembayaran;
+                                            konfirmasi_pembayaran = new Intent(SewaActivity.this, KonfirmasiActivity.class);
+                                            startActivity(konfirmasi_pembayaran);
                                             finish();
                                         } catch (Exception e) {
                                             Toast.makeText(SewaActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -185,18 +199,18 @@ public class SewaActivity extends AppCompatActivity {
                 }
             }
         });
-
+        //parameter  setupToolbar
         setupToolbar();
-
     }
 
+        //deklarasi parameter setupToolbar
     private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.tbsewa);
         toolbar.setTitle("Form Sewa Otoped Wheels");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
+        //back home pada toolbar
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -206,6 +220,7 @@ public class SewaActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //deklarasi parameter perhitunganHarga pada variabel btnSewa
     public void perhitunganHarga() {
         if (sJarak.equalsIgnoreCase("1") && sBerat.equalsIgnoreCase("40-50")) {
             harga = 15000;
@@ -261,10 +276,11 @@ public class SewaActivity extends AppCompatActivity {
 
 
         jml = Integer.parseInt(sWaktu);
-
+        //perhitungan harga
         hargaTotal = jml * harga;
           }
 
+          //set tanggal
     private void setDateTimeField() {
         etTanggal.setOnClickListener(new View.OnClickListener() {
             @Override

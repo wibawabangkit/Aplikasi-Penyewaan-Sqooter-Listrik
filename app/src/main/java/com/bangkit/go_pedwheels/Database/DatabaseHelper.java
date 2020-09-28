@@ -1,4 +1,4 @@
-package com.bangkit.go_pedwheels.database;
+package com.bangkit.go_pedwheels.Database;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,12 +7,10 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/** By Wibawa Bangkit on Tahun 2020
- *  Penyewaan Otoped  Wheels Berdasarkan Metode TOPSIS
- */
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     //nama database
-    public static final String DATABASE_NAME = "db_goped";
+    public static final String DATABASE_NAME = "db_apkgoped.db";
     // nama tabel dan kolom pada user
     public static final String TABLE_USER = "tb_user";
     public static final String COL_USERNAME = "username";
@@ -35,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private SQLiteDatabase db;
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 3);
+        super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
@@ -55,7 +53,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " TEXT, FOREIGN KEY(" + COL_USERNAME + ") REFERENCES " + TABLE_USER
                 + ", FOREIGN KEY(" + COL_ID_SEWA + ") REFERENCES " + TABLE_SEWA + ")");
         //sample record tabel user
-        db.execSQL("insert into " + TABLE_USER + " values ('admin@gmail.com','admin','admin');");
+        db.execSQL("insert into " + TABLE_USER + " values ('Rifqi@gmail.com','aaa','Owner'),('admin','aaa','admin');");
     }
 
     @Override
@@ -75,6 +73,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return mCursor.getCount() > 0;
         }
         return false;
+    }
+
+
+    public boolean checkUserAsAdmin(String username, String password){
+        String email = "admin";
+        String passwords = "aaa";
+        return username.equals(email) && password.equals(passwords);
     }
 
     public boolean Login(String username, String password) throws SQLException {

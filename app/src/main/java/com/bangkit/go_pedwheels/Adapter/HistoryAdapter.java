@@ -1,4 +1,4 @@
-package com.bangkit.go_pedwheels.adapter;
+package com.bangkit.go_pedwheels.Adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -14,9 +14,7 @@ import com.bangkit.go_pedwheels.R;
 
 import java.util.ArrayList;
 
-/** By Wibawa Bangkit on Tahun 2020
- *  Penyewaan Otoped  Wheels Berdasarkan Metode TOPSIS
- */
+
 public class HistoryAdapter extends ArrayAdapter<HistoryModel> {
 
     public HistoryAdapter(Activity context, ArrayList<HistoryModel> notification) {
@@ -48,6 +46,8 @@ public class HistoryAdapter extends ArrayAdapter<HistoryModel> {
 
         TextView total = listItemView.findViewById(R.id.total);
         total.setText("Rp. " + current.getTotal());
+
+
 
         ImageView imageIcon = listItemView.findViewById(R.id.image);
 

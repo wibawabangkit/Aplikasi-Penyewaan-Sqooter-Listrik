@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bangkit.go_pedwheels.activities.SplashActivity"
+    tools:context="com.bangkit.go_pedwheels.Activities.SplashActivity"
     android:background="@drawable/spscreen">
     <TextView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,7 +16,6 @@
         android:textSize="30sp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
-
 
     <ProgressBar
         android:layout_width="wrap_content"

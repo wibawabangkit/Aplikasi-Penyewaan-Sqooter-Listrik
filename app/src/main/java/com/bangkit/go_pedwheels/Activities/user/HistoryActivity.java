@@ -1,30 +1,25 @@
-package com.bangkit.go_pedwheels.activities;
+package com.bangkit.go_pedwheels.Activities.user;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bangkit.go_pedwheels.Model.HistoryModel;
 import com.bangkit.go_pedwheels.R;
-import com.bangkit.go_pedwheels.adapter.HistoryAdapter;
-import com.bangkit.go_pedwheels.database.DatabaseHelper;
-import com.bangkit.go_pedwheels.session.SessionManager;
+import com.bangkit.go_pedwheels.Adapter.HistoryAdapter;
+import com.bangkit.go_pedwheels.Database.DatabaseHelper;
+import com.bangkit.go_pedwheels.Session.SessionManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-/** By Wibawa Bangkit on Tahun 2020
- *  Penyewaan Otoped  Wheels Berdasarkan Metode TOPSIS
- */
+
 public class HistoryActivity extends AppCompatActivity {
 
         protected Cursor cursor;
@@ -51,7 +46,7 @@ public class HistoryActivity extends AppCompatActivity {
 
             email = user.get(SessionManager.KEY_EMAIL);
 
-            refreshList();
+                refreshList();
             setupToolbar();
         }
 
@@ -90,29 +85,6 @@ public class HistoryActivity extends AppCompatActivity {
             HistoryAdapter arrayAdapter = new HistoryAdapter(this, hasil);
             listBook.setAdapter(arrayAdapter);
 
-            //delete data
-            listBook.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    final String selection = hasil.get(i).getIdsewa();
-                    final CharSequence[] dialogitem = {"Hapus Data"};
-                    AlertDialog.Builder builder = new AlertDialog.Builder(HistoryActivity.this);
-                    builder.setTitle("Pilihan");
-                    builder.setItems(dialogitem, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int item) {
-                            SQLiteDatabase db = dbHelper.getWritableDatabase();
-                            try {
-                                db.execSQL("DELETE FROM TB_SEWA where ID_Sewa = " + selection + "");
-                                ID_Sewa = "";
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            refreshList();
-                        }
-                    });
-                    builder.create().show();
-                }
-            });
 
             if (ID_Sewa.equals("")) {
                 tvNotFound.setVisibility(View.VISIBLE);
@@ -120,7 +92,7 @@ public class HistoryActivity extends AppCompatActivity {
             } else {
                 tvNotFound.setVisibility(View.GONE);
                 listBook.setVisibility(View.VISIBLE);
-            }
 
-        }
     }
+        }
+}

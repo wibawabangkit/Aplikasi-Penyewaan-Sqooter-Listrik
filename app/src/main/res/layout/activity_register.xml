@@ -24,7 +24,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="25dp"
             android:elevation="5dp"
-            android:text="@string/app_name"
+            android:text="GOPED WHEELS"
             android:textStyle="italic"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
@@ -110,7 +110,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.google.android.material.card.MaterialCardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/cv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -212,7 +212,7 @@
                         android:layout_marginTop="80dp"
                         android:layout_marginEnd="30dp">
 
-                        <com.google.android.material.button.MaterialButton
+                        <Button
                             android:id="@+id/daftar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -227,7 +227,7 @@
 
                     </RelativeLayout>
 
-                </com.google.android.material.card.MaterialCardView>
+                </androidx.cardview.widget.CardView>
 
             </RelativeLayout>
 

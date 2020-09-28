@@ -1,4 +1,4 @@
-package com.bangkit.go_pedwheels.activities;
+package com.bangkit.go_pedwheels.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,11 +15,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bangkit.go_pedwheels.R;
-import com.bangkit.go_pedwheels.database.DatabaseHelper;
+import com.bangkit.go_pedwheels.Database.DatabaseHelper;
 
-/** By Wibawa Bangkit on Tahun 2020
- *  Penyewaan Otoped  Wheels Berdasarkan Metode TOPSIS
- */
+
 public class RegisterActivity extends AppCompatActivity {
 
     EditText txtName, txtUsername, txtPassword;

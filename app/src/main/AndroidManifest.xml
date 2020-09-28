@@ -4,26 +4,37 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_apk"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ProsedurActivity"></activity>
-        <activity android:name=".activities.HistoryActivity" />
-        <activity android:name=".activities.SewaActivity" />
-        <activity android:name=".activities.ProfilActivity" />
-        <activity android:name=".activities.SplashActivity">
+        <activity android:name=".Activities.admin.TotalSewaActivity"></activity>
+        <activity android:name=".Activities.admin.DetilSewaActivity" />
+        <activity android:name=".Activities.user.WA_Activity" />
+        <activity android:name=".Activities.user.TelpActivity" />
+        <activity android:name=".Activities.user.KonfirmasiActivity" />
+        <activity android:name=".Activities.admin.HistoryAdmin" />
+        <activity android:name=".Activities.admin.HomeAdmin" />
+        <activity android:name=".Activities.ProsedurActivity" />
+        <activity android:name=".Activities.user.HistoryActivity" />
+        <activity android:name=".Activities.user.SewaActivity" />
+        <activity android:name=".Activities.user.ProfilActivity" />
+        <activity android:name=".Activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.PofileActivity" />
-        <activity android:name=".activities.RegisterActivity" />
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".Activities.RegisterActivity" />
+        <activity android:name=".Activities.LoginActivity" />
+        <activity android:name=".Activities.user.MainActivity" />
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

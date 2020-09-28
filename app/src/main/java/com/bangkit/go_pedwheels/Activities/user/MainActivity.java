@@ -1,4 +1,4 @@
-package com.bangkit.go_pedwheels.activities;
+package com.bangkit.go_pedwheels.Activities.user;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,29 +8,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.bangkit.go_pedwheels.Activities.admin.HistoryAdmin;
 import com.bangkit.go_pedwheels.R;
-import com.bangkit.go_pedwheels.adapter.AlertDialogManager;
-import com.bangkit.go_pedwheels.session.SessionManager;
+import com.bangkit.go_pedwheels.Activities.ProsedurActivity;
+import com.bangkit.go_pedwheels.Adapter.AlertDialogManager;
+import com.bangkit.go_pedwheels.Session.SessionManager;
 
 import java.util.Calendar;
 import java.util.Date;
 
-/** By Wibawa Bangkit on Tahun 2020
- *  Penyewaan Otoped  Wheels Berdasarkan Metode TOPSIS
- */
+
 public class MainActivity extends AppCompatActivity {
 
     AlertDialogManager alert = new AlertDialogManager();
     SessionManager session;
     Button btnLogout;
     String hariIni;
-    TextView today;
+    TextView today, namaAPP;
+    ImageView telp1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                finish();
                                 session.logoutUser();
+                                finish();
                             }
                         })
                         .setNegativeButton("Tidak", null)
@@ -60,6 +59,25 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
+        namaAPP = findViewById(R.id.textcall);
+        namaAPP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent telp = new Intent(MainActivity.this,TelpActivity.class);
+                startActivity(telp);
+                finish();
+            }
+        });
+        telp1 = findViewById(R.id.call);
+        telp1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent imagetelp1 = new Intent(MainActivity.this, TelpActivity.class);
+                startActivity(imagetelp1);
+                finish();
+            }
+        });
+
 
         Date dateNow = Calendar.getInstance().getTime();
         hariIni = (String) DateFormat.format("EEEE", dateNow);
@@ -80,17 +98,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         getToday();
-
-
     }
 
     public void profileMenu(View v) {
-        Intent profil = new Intent(this,ProfilActivity.class);
+        Intent profil = new Intent(this, ProfilActivity.class);
         startActivity(profil);
     }
 
     public void historyMenu(View v) {
-        Intent History = new Intent(this,HistoryActivity.class);
+        Intent History = new Intent(this, HistoryActivity.class);
         startActivity(History);
     }
 
@@ -139,5 +155,21 @@ public class MainActivity extends AppCompatActivity {
         }
         String formatFix = hariIni + ", " + DATE + " " + nama + " " + year;
         today.setText(formatFix);
+    }
+    @Override
+    public void onBackPressed() {
+        AlertDialog dialog = new AlertDialog.Builder(MainActivity.this)
+                .setTitle("Anda yakin ingin keluar ?")
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        session.destroyCurrentUser(); // ini buat clear user yg lg login
+                        session.logoutUser();
+                        finish();
+                    }
+                })
+                .setNegativeButton("Tidak", null)
+                .create();
+        dialog.show();
     }
 }
