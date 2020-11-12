@@ -6,7 +6,7 @@
     android:background="@color/gray">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tbHistory"
+        android:id="@+id/tbHistoryPakai"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@drawable/bg_home_wave"
@@ -15,32 +15,29 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tbHistory"
+        android:layout_below="@+id/tbHistoryPakai"
         android:padding="20sp">
 
         <ListView
-            android:id="@+id/list_booking"
+            android:id="@+id/list_riwayat_pakai"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true">
+
         </ListView>
 
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/noHistory"
+        android:id="@+id/noHistoryPakai"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Belum Ada Riwayat Booking"
+        android:text="Belum Ada Riwayat Pemakaian"
         android:textColor="@color/biru"
         android:textSize="20sp"
         android:textStyle="bold"
         android:visibility="gone" />
-
-
-
-
 
 </RelativeLayout>

@@ -28,8 +28,7 @@ public class MainActivity extends AppCompatActivity {
     SessionManager session;
     Button btnLogout;
     String hariIni;
-    TextView today, namaAPP;
-    ImageView telp1;
+    TextView today;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,24 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
-        namaAPP = findViewById(R.id.textcall);
-        namaAPP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent telp = new Intent(MainActivity.this,TelpActivity.class);
-                startActivity(telp);
-                finish();
-            }
-        });
-        telp1 = findViewById(R.id.call);
-        telp1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent imagetelp1 = new Intent(MainActivity.this, TelpActivity.class);
-                startActivity(imagetelp1);
-                finish();
-            }
-        });
+
 
 
         Date dateNow = Calendar.getInstance().getTime();
@@ -116,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Persyaratan(View v) {
-        Intent persyaratan = new Intent(this, ProsedurActivity.class);
+        Intent persyaratan = new Intent(this, HistoryPemakaian.class);
         startActivity(persyaratan);
     }
 

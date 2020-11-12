@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/biru"
-    android:padding="40sp"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
+    android:padding="30sp"
     tools:context=".Activities.admin.DetilSewaActivity">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp">
     <ImageView
         android:layout_width="250dp"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:src="@drawable/otoped"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/TextView01"
@@ -32,7 +37,7 @@
             android:id="@+id/value_idsewa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:textStyle="bold"
             android:textSize="20sp"
             android:text=" 001" />
@@ -49,13 +54,13 @@
             android:textSize="20sp"
             android:layout_marginTop="20dp"
             android:textColor="@color/white"
-            android:drawableLeft="@drawable/ic_group_black_24dp"
+            android:drawableStart="@drawable/ic_group_black_24dp"
             android:text="Berat Badan (Kg)" />
         <TextView
             android:id="@+id/value_beratbadan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:textStyle="bold"
             android:textSize="20sp"
             android:text=" 45-55" />
@@ -72,13 +77,13 @@
             android:textSize="20sp"
             android:layout_marginTop="20dp"
             android:textColor="@color/white"
-            android:drawableLeft="@drawable/ic_date_range_black_24dp"
+            android:drawableStart="@drawable/ic_date_range_black_24dp"
             android:text="Tanggal Penyewaan " />
         <TextView
             android:id="@+id/value_tanggalsewa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:textStyle="bold"
             android:textSize="20sp"
             android:text=" 10 Agustus 2020" />
@@ -95,13 +100,13 @@
             android:textSize="20sp"
             android:layout_marginTop="20dp"
             android:textColor="@color/white"
-            android:drawableLeft="@drawable/ic_baseline_av_timer_24"
-            android:text="Waktu Penyewaan (Jam) " />
+            android:drawableStart="@drawable/ic_baseline_av_timer_24"
+            android:text="Durasi Penyewaan (Menit) " />
         <TextView
             android:id="@+id/value_waktusewa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:textStyle="bold"
             android:textSize="20sp"
             android:text=" 3 " />
@@ -110,28 +115,6 @@
             android:layout_height="1dp"
             android:background="@color/white"/>
 
-        //alamat
-        <TextView
-            android:id="@+id/TextView05"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/white"
-            android:drawableLeft="@drawable/ic_place_black_24dp"
-            android:text="Jarak Penyewaan (Km) " />
-        <TextView
-            android:id="@+id/value_jaraksewa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:text=" 2 " />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/white"/>
 
         <Button
             android:id="@+id/Prosedurr"
@@ -142,5 +125,5 @@
             android:textColor="@color/black"
             android:text="Lihat Prosedur Pesanan"/>
     </LinearLayout>
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

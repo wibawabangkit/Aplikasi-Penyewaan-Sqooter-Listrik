@@ -1,5 +1,9 @@
 package com.bangkit.go_pedwheels.Activities.admin;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,42 +15,40 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.bangkit.go_pedwheels.Adapter.HistoryAdapter;
-import com.bangkit.go_pedwheels.Model.HistoryModel;
-import com.bangkit.go_pedwheels.R;
+import com.bangkit.go_pedwheels.Activities.user.DetilPemakaian;
 
+import com.bangkit.go_pedwheels.Adapter.HistoryAdapter;
+import com.bangkit.go_pedwheels.Adapter.HistoryPemakaianAdapter;
 import com.bangkit.go_pedwheels.Database.DatabaseHelper;
+import com.bangkit.go_pedwheels.Model.HistoryModel;
+import com.bangkit.go_pedwheels.Model.Mhistory_pemakaian;
+import com.bangkit.go_pedwheels.R;
 import com.bangkit.go_pedwheels.Session.SessionManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-
-public class HistoryAdmin extends AppCompatActivity {
+public class HistoryPemakaianAdmin extends AppCompatActivity {
     //Variabel
     protected Cursor cursor;
     DatabaseHelper dbHelper;
     SQLiteDatabase db;
     SessionManager session;
-    String ID_Sewa = "", Waktu, tanggal, riwayat, total;
+    String ID_Sewa = "", kerusakan,tanggalpakai, riwayatpakai, hasil;
     String email;
     TextView tvNotFound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history_admin);
+        setContentView(R.layout.activity_history_pemakaian_admin);
 
         //Conection Database
         dbHelper = new DatabaseHelper(this);
         db = dbHelper.getReadableDatabase();
 
         //variabel target
-        tvNotFound = findViewById(R.id.noHistory);
+        tvNotFound = findViewById(R.id.noHistoryPakai);
 
         //conection session
         session = new SessionManager(getApplicationContext());
@@ -57,10 +59,10 @@ public class HistoryAdmin extends AppCompatActivity {
         refreshList();
         setupToolbar();
     }
-        //Deklarasi Parameter setupToolbar
+    //Deklarasi Parameter setupToolbar
     private void setupToolbar() {
-        Toolbar toolbar = findViewById(R.id.tbHistory);
-        toolbar.setTitle("Riwayat Sewa");
+        Toolbar toolbar = findViewById(R.id.tbHistoryPakai);
+        toolbar.setTitle("Riwayat Pemakaian");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -77,23 +79,22 @@ public class HistoryAdmin extends AppCompatActivity {
 
     //Deklarasi Parameter refreshList
     public void refreshList() {
-
-        final ArrayList<HistoryModel> hasil = new ArrayList<>();
-        cursor = db.rawQuery("SELECT * FROM TB_SEWA, TB_HARGA WHERE TB_SEWA.ID_Sewa = TB_HARGA.ID_Sewa ", null);
+        final ArrayList<Mhistory_pemakaian> kesimpulan = new ArrayList<>();
+        cursor = db.rawQuery( "SELECT * FROM TB_SEWA  WHERE ID_Sewa = ID_Sewa",null);
         cursor.moveToFirst();
         for (int i = 0; i < cursor.getCount(); i++) {
             cursor.moveToPosition(i);
-            ID_Sewa = !cursor.getString(0).isEmpty() ? cursor.getString(0) : "";
-            Waktu = cursor.getString(4);
-            tanggal = cursor.getString(3);
-            total =cursor.getString(11);
-            riwayat = "Berhasil melakukan penyewaan dengan waktu sewa " + Waktu + " Menit pada tanggal " + tanggal + ". ";
-            hasil.add(new HistoryModel(ID_Sewa, tanggal, riwayat, total, R.drawable.profile));
+            ID_Sewa = cursor.getString(0);
+            tanggalpakai = cursor.getString(3);
+            kerusakan = cursor.getString(5);
+            hasil = cursor.getString(7);
+            riwayatpakai = "Berdasarkan pemakaian otoped wheels terdapat kerusakan "+ kerusakan +".";
+            kesimpulan.add(new Mhistory_pemakaian(ID_Sewa, tanggalpakai, riwayatpakai, hasil, R.drawable.profile));
         }
 
-        //Configuration List Penyewaan
-        ListView listBook = findViewById(R.id.list_booking);
-        HistoryAdapter arrayAdapter = new HistoryAdapter(this, hasil);
+        //Configuration List pemakaian
+        ListView listBook = findViewById(R.id.list_riwayat_pakai);
+        HistoryPemakaianAdapter arrayAdapter = new HistoryPemakaianAdapter(this, kesimpulan);
         listBook.setAdapter(arrayAdapter);
         listBook.setSelected(true);
 
@@ -101,9 +102,9 @@ public class HistoryAdmin extends AppCompatActivity {
         listBook.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final String selection = hasil.get(i).getIdsewa();
-                final CharSequence[] dialogitem = {"Lihat Data","Hapus Data","Input Data Pemakaian"};
-                AlertDialog.Builder builder = new AlertDialog.Builder(HistoryAdmin.this);
+                final String selection = kesimpulan.get(i).getIdsewa();
+                final CharSequence[] dialogitem = {"Lihat Data", "Hapus Data"};
+                AlertDialog.Builder builder = new AlertDialog.Builder(HistoryPemakaianAdmin.this);
                 builder.setTitle("Pilihan");
                 builder.setItems(dialogitem, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int item) {
@@ -111,7 +112,7 @@ public class HistoryAdmin extends AppCompatActivity {
                         switch (item) {
                             case 0 :
                                 Intent i = new Intent(getApplicationContext(), //melihat detil database berdasarkan ID Penyewaan
-                                        DetilSewaActivity.class);
+                                        DetilPemakaian.class);
                                 i.putExtra("ID_Sewa", selection);
                                 startActivity(i);
                                 break;
@@ -120,12 +121,7 @@ public class HistoryAdmin extends AppCompatActivity {
                                 ID_Sewa = "";
                                 refreshList();
                                 break;
-                            case 2:
-                                Intent ii = new Intent(getApplicationContext(), //input history database berdasarkan ID Penyewaan
-                                        InsertPemakaian.class);
-                                ii.putExtra("ID_Sewa", selection);
-                                startActivity(ii);
-                                break;
+
                         }
                     }});
                 builder.create().show();

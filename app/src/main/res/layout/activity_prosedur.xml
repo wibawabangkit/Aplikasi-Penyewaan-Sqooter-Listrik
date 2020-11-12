@@ -109,6 +109,20 @@
 
 
                 </RelativeLayout>
+                <Button
+                    android:id="@+id/konfirmasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="64dp"
+                    android:layout_marginRight="64dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="500dp"
+                    android:text="Bayar"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:backgroundTint="@color/biru"
+                    app:cornerRadius="50dp" />
 
             </androidx.cardview.widget.CardView>
 

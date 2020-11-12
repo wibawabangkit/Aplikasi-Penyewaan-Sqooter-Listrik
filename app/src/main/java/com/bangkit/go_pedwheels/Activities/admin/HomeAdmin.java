@@ -93,10 +93,10 @@ public class HomeAdmin extends AppCompatActivity {
         startActivity(total);
     }
 
-    //go to menu persyaratan pada admin
+    //go to menu pemakaian pada admin
     public void Persyaratan(View v) {
-        Intent persyaratan = new Intent(this, ProsedurActivity.class);
-        startActivity(persyaratan);
+        Intent pemakaian = new Intent(this, HistoryPemakaianAdmin.class);
+        startActivity(pemakaian);
     }
 
     //deklarasi parameter getToday

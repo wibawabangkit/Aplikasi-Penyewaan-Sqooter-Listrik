@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/biru"
+    android:padding="30sp"
+    tools:context=".Activities.admin.DetilSewaActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp">
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:src="@drawable/otoped"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:drawablePadding="5dp"
+                android:drawableLeft="@drawable/ic_create_black_24dp"
+                android:text="ID Sewa" />
+            <TextView
+                android:id="@+id/value_idsewa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text=" 001" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white"/>
+
+            //Nama
+            <TextView
+                android:id="@+id/TextView02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/ic_baseline_motorcycle_24"
+                android:text="Kerusakan" />
+            <TextView
+                android:id="@+id/value_rusak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text=" Stang Patah / Speleng" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white"/>
+
+            //Tempat tanggal lahir
+            <TextView
+                android:id="@+id/TextView03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:drawableStart="@drawable/ic_date_range_black_24dp"
+                android:text="Tanggal Penyewaan " />
+            <TextView
+                android:id="@+id/value_tanggalpakai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text=" 10 Agustus 2020" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white"/>
+
+            //Jenis kelamin
+            <TextView
+                android:id="@+id/TextView04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/ic_baseline_av_timer_24"
+                android:text="Durasi Penyewaan (Menit) " />
+            <TextView
+                android:id="@+id/value_waktupakai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text=" 3 " />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white"/>
+            //Jenis kelamin
+            <TextView
+                android:id="@+id/TextView05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:drawablePadding="5dp"
+                android:textColor="@color/white"
+                android:drawableStart="@drawable/ic_baseline_check_24"
+                android:text="Hasil " />
+            <TextView
+                android:id="@+id/value_hasil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text=" BAIK " />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white"/>
+
+            <Button
+                android:id="@+id/BACK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@color/white"
+                android:textColor="@color/black"
+                android:text="Kembali Ke Branda"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

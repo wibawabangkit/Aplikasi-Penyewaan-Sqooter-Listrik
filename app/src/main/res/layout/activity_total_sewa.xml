@@ -8,7 +8,7 @@
     android:padding="40sp"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context=".Activities.admin.DetilSewaActivity">
+    tools:context=".Activities.admin.TotalSewaActivity">
 
     <ImageView
         android:layout_width="250dp"
@@ -53,7 +53,8 @@
                         android:layout_marginStart="5dp"
                         android:textStyle="bold"
                         android:textSize="20sp"
-                        android:text="2000.0000" />
+                        android:text="0" />
+
         </LinearLayout>
 
         <View

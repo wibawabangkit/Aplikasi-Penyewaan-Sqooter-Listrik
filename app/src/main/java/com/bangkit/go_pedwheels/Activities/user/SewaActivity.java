@@ -33,12 +33,12 @@ public class SewaActivity extends AppCompatActivity {
     protected Cursor cursor;
     DatabaseHelper dbHelper;
     SQLiteDatabase db;
-    Spinner spinUsia, spinBerat, spinWaktu, spinJarak;
+    Spinner spinUsia, spinBerat, spinWaktu;
     SessionManager session;
     String email;
     int ID_Sewa;
-    public String sUsia, sBerat, sWaktu, sJarak, sTanggal;
     int jml;
+    public String sUsia, sBerat, sWaktu, sTanggal;
     int harga, hargaTotal;
     private EditText etTanggal;
     private DatePickerDialog dpTanggal;
@@ -52,16 +52,15 @@ public class SewaActivity extends AppCompatActivity {
         db = dbHelper.getReadableDatabase();
 
         //array
-        final String[] Usia = {"0","Anak", "Dewasa"};
+        final String[] Usia = {"0","8-15", "16-30", "31-60"};
         final String[] Berat = {"0","40-50", "50-55", "55-60", "60-65", "65-70"};
-        final String[] Waktu = {"0","1", "2", "3", "4", "5"};
-        final String[] Jarak = {"0","1", "2", "3", "4", "5"};
+        final String[] Waktu = {"0","30", "60", "90"};
+
 
         //spinner sewa
         spinUsia = findViewById(R.id.umur);
         spinBerat = findViewById(R.id.berat);
         spinWaktu = findViewById(R.id.lamasewa);
-        spinJarak = findViewById(R.id.jarak);
 
         //deklarasi spiner
         ArrayAdapter<CharSequence> adapterUmur = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, Usia);
@@ -76,9 +75,6 @@ public class SewaActivity extends AppCompatActivity {
         adapterWaktu.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinWaktu.setAdapter(adapterWaktu);
 
-        ArrayAdapter<CharSequence> adapterJarak = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, Jarak);
-        adapterJarak.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinJarak.setAdapter(adapterJarak);
 
         //Pemanggilan spinner
         spinUsia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -114,18 +110,7 @@ public class SewaActivity extends AppCompatActivity {
 
             }
         });
-        //Pemanggilan spinner
-        spinJarak.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                sJarak = parent.getItemAtPosition(position).toString();
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         //deklarasi variabel btnSewa, etTanggal
         Button btnSewa = findViewById(R.id.btnsewa);
@@ -148,11 +133,10 @@ public class SewaActivity extends AppCompatActivity {
                 //parameter  perhitunganHarga
                 perhitunganHarga();
                 //jika memilih "0" maka akan muncul notifikasi "Isi Dengan Benar !"
-                if (sUsia != null && sBerat != null && sWaktu != null && sJarak != null && sTanggal != null) {
+                if (sUsia != null && sBerat != null && sWaktu != null &&  sTanggal != null) {
                     if ((sUsia.equalsIgnoreCase("0"))
                             || (sBerat.equalsIgnoreCase("0"))
                             || (sWaktu.equalsIgnoreCase("0"))
-                            || (sJarak.equalsIgnoreCase("0"))
                             ) {
                         Toast.makeText(SewaActivity.this, "Isi Dengan Benar !", Toast.LENGTH_LONG).show();
                     } else {
@@ -163,12 +147,11 @@ public class SewaActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         try {
-                                            db.execSQL("INSERT INTO tb_sewa (Usia, Berat, Tanggal, Waktu, Jarak) VALUES ('" +
+                                            db.execSQL("INSERT INTO tb_sewa (Usia, Berat, tanggal, Waktu) VALUES ('" +
                                                     sUsia + "','" +
                                                     sBerat + "','" +
                                                     sTanggal + "','" +
-                                                    sWaktu + "','" +
-                                                    sJarak + "');");
+                                                    sWaktu + "');");
                                             cursor = db.rawQuery("SELECT ID_Sewa FROM tb_sewa ORDER BY ID_Sewa DESC", null);
                                             cursor.moveToLast();
                                             if (cursor.getCount() > 0) {
@@ -179,10 +162,9 @@ public class SewaActivity extends AppCompatActivity {
                                                     email + "','" +
                                                     ID_Sewa + "','" +
                                                     harga + "','" +
-                                                    hargaTotal + "');");
-                                            Toast.makeText(SewaActivity.this, "Sewa berhasil", Toast.LENGTH_LONG).show();
+                                                    hargaTotal + "');");Toast.makeText(SewaActivity.this, "Sewa berhasil", Toast.LENGTH_LONG).show();
                                             Intent konfirmasi_pembayaran;
-                                            konfirmasi_pembayaran = new Intent(SewaActivity.this, KonfirmasiActivity.class);
+                                            konfirmasi_pembayaran = new Intent(SewaActivity.this, HistoryActivity.class);
                                             startActivity(konfirmasi_pembayaran);
                                             finish();
                                         } catch (Exception e) {
@@ -222,63 +204,43 @@ public class SewaActivity extends AppCompatActivity {
 
     //deklarasi parameter perhitunganHarga pada variabel btnSewa
     public void perhitunganHarga() {
-        if (sJarak.equalsIgnoreCase("1") && sBerat.equalsIgnoreCase("40-50")) {
+        if (sUsia.equalsIgnoreCase("8-15") && sBerat.equalsIgnoreCase("40-50")) {
             harga = 15000;
-        } else if (sJarak.equalsIgnoreCase("1") && sBerat.equalsIgnoreCase("50-55")) {
+        } else if (sUsia.equalsIgnoreCase("8-15") && sBerat.equalsIgnoreCase("50-55")) {
             harga = 15000;
-        } else if (sJarak.equalsIgnoreCase("1") && sBerat.equalsIgnoreCase("55-60")) {
+        } else if (sUsia.equalsIgnoreCase("8-15") && sBerat.equalsIgnoreCase("55-60")) {
             harga = 15000;
-        } else if (sJarak.equalsIgnoreCase("1") && sBerat.equalsIgnoreCase("60-65")) {
+        } else if (sUsia.equalsIgnoreCase("8-15") && sBerat.equalsIgnoreCase("60-65")) {
             harga = 20000;
-        } else if (sJarak.equalsIgnoreCase("1") && sBerat.equalsIgnoreCase("65-70")) {
+        } else if (sUsia.equalsIgnoreCase("8-15") && sBerat.equalsIgnoreCase("65-70")) {
             harga = 20000;
-        } else if (sJarak.equalsIgnoreCase("2") && sBerat.equalsIgnoreCase("40-50")) {
+        } else if (sUsia.equalsIgnoreCase("16-30") && sBerat.equalsIgnoreCase("40-50")) {
             harga = 15000;
-        } else if (sJarak.equalsIgnoreCase("2") && sBerat.equalsIgnoreCase("50-55")) {
+        } else if (sUsia.equalsIgnoreCase("16-30") && sBerat.equalsIgnoreCase("50-55")) {
             harga = 15000;
-        } else if (sJarak.equalsIgnoreCase("2") && sBerat.equalsIgnoreCase("55-60")) {
+        } else if (sUsia.equalsIgnoreCase("16-30") && sBerat.equalsIgnoreCase("55-60")) {
             harga = 15000;
-        } else if (sJarak.equalsIgnoreCase("2") && sBerat.equalsIgnoreCase("60-65")) {
+        } else if (sUsia.equalsIgnoreCase("16-30") && sBerat.equalsIgnoreCase("60-65")) {
             harga = 20000;
-        } else if (sJarak.equalsIgnoreCase("2") && sBerat.equalsIgnoreCase("65-70")) {
+        } else if (sUsia.equalsIgnoreCase("16-30") && sBerat.equalsIgnoreCase("65-70")) {
             harga = 20000;
-        }else if (sJarak.equalsIgnoreCase("3") && sBerat.equalsIgnoreCase("40-50")) {
+        }else if (sUsia.equalsIgnoreCase("31-60") && sBerat.equalsIgnoreCase("40-50")) {
             harga = 15000;
-        } else if (sJarak.equalsIgnoreCase("3") && sBerat.equalsIgnoreCase("50-55")) {
+        } else if (sUsia.equalsIgnoreCase("31-60") && sBerat.equalsIgnoreCase("50-55")) {
             harga = 15000;
-        } else if (sJarak.equalsIgnoreCase("3") && sBerat.equalsIgnoreCase("55-60")) {
+        } else if (sUsia.equalsIgnoreCase("31-60") && sBerat.equalsIgnoreCase("55-60")) {
             harga = 15000;
-        } else if (sJarak.equalsIgnoreCase("3") && sBerat.equalsIgnoreCase("60-65")) {
+        } else if (sUsia.equalsIgnoreCase("31-60") && sBerat.equalsIgnoreCase("60-65")) {
             harga = 20000;
-        } else if (sJarak.equalsIgnoreCase("3") && sBerat.equalsIgnoreCase("65-70")) {
-            harga = 20000;
-        }else if (sJarak.equalsIgnoreCase("4") && sBerat.equalsIgnoreCase("40-50")) {
-            harga = 15000;
-        } else if (sJarak.equalsIgnoreCase("4") && sBerat.equalsIgnoreCase("50-55")) {
-            harga = 15000;
-        } else if (sJarak.equalsIgnoreCase("4") && sBerat.equalsIgnoreCase("55-60")) {
-            harga = 15000;
-        } else if (sJarak.equalsIgnoreCase("4") && sBerat.equalsIgnoreCase("60-65")) {
-            harga = 20000;
-        } else if (sJarak.equalsIgnoreCase("4") && sBerat.equalsIgnoreCase("65-70")) {
-            harga = 20000;
-        }else if (sJarak.equalsIgnoreCase("5") && sBerat.equalsIgnoreCase("40-50")) {
-            harga = 15000;
-        } else if (sJarak.equalsIgnoreCase("5") && sBerat.equalsIgnoreCase("50-55")) {
-            harga = 15000;
-        } else if (sJarak.equalsIgnoreCase("5") && sBerat.equalsIgnoreCase("55-60")) {
-            harga = 15000;
-        } else if (sJarak.equalsIgnoreCase("5") && sBerat.equalsIgnoreCase("60-65")) {
-            harga = 20000;
-        } else if (sJarak.equalsIgnoreCase("5") && sBerat.equalsIgnoreCase("65-70")) {
+        } else if (sUsia.equalsIgnoreCase("31-60") && sBerat.equalsIgnoreCase("65-70")) {
             harga = 20000;
         }
 
 
-        jml = Integer.parseInt(sWaktu);
+        jml = Integer.parseInt(String.valueOf(1));
         //perhitungan harga
         hargaTotal = jml * harga;
-          }
+    }
 
           //set tanggal
     private void setDateTimeField() {

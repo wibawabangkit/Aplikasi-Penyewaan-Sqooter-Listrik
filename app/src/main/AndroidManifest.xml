@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bangkit.go_pedwheels">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_apk"
@@ -9,10 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.admin.TotalSewaActivity"></activity>
+        <activity android:name=".Activities.admin.InsertPemakaian"/>
+        <activity android:name=".Activities.admin.HistoryPemakaianAdmin" />
+        <activity android:name=".Activities.user.DetilPemakaian" />
+        <activity android:name=".Activities.user.HistoryPemakaian" />
+        <activity android:name=".Activities.admin.TotalSewaActivity" />
         <activity android:name=".Activities.admin.DetilSewaActivity" />
         <activity android:name=".Activities.user.WA_Activity" />
-        <activity android:name=".Activities.user.TelpActivity" />
         <activity android:name=".Activities.user.KonfirmasiActivity" />
         <activity android:name=".Activities.admin.HistoryAdmin" />
         <activity android:name=".Activities.admin.HomeAdmin" />
@@ -31,10 +39,5 @@
         <activity android:name=".Activities.LoginActivity" />
         <activity android:name=".Activities.user.MainActivity" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

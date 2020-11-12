@@ -10,16 +10,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     //nama database
-    public static final String DATABASE_NAME = "db_apkgoped.db";
+    public static final String DATABASE_NAME = "aplikasiku.db";
     // nama tabel dan kolom pada user
     public static final String TABLE_USER = "tb_user";
     public static final String COL_USERNAME = "username";
     public static final String COL_PASSWORD = "password";
     public static final String COL_NAME = "name";
-    // nama tabel dan kolom pada sewa
+    //nama tabel dan kolom pada sewa
     public static  final String TABLE_SEWA = "tb_sewa";
     public static final String COL_ID_SEWA = "ID_Sewa";
-    public static final String COL_JARAK = "Jarak";
     public static final String COL_USIA = "Usia";
     public static final String COL_TANGGAL = "tanggal";
     public static final String COL_WAKTU = "Waktu";
@@ -28,6 +27,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_HARGA = "tb_harga";
     public static final String COL_HARGA_TOTAL = "harga_total";
     public static final String COL_HARGA = "harga";
+    //colom riwayat pemakaian
+    public static final String COL_RUSAK = "rusak";
+    public static final String COL_HILANG = "hilang";
+    public static final String COL_HASIL = "hasil";
 
 
     private SQLiteDatabase db;
@@ -45,8 +48,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " TEXT, " + COL_NAME + " TEXT)");
         //Tabel Sewa
         db.execSQL("create table " + TABLE_SEWA + " (" + COL_ID_SEWA + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_USIA + " TEXT, " + COL_BERAT + " TEXT" + ", " + COL_TANGGAL + " TEXT, " + COL_WAKTU + " TEXT, "
-                + COL_JARAK + " TEXT)");
+                COL_USIA + " TEXT, " + COL_BERAT + " TEXT" + ", " + COL_TANGGAL + " TEXT, " + COL_WAKTU + " TEXT, " +
+                "" + "" + COL_RUSAK + " TEXT, " + COL_HILANG + " TEXT, " +
+                "" + COL_HASIL + " TEXT," + COL_USERNAME + " TEXT)");
+
         //Tabel Harga
         db.execSQL("create table " + TABLE_HARGA + " (" + COL_USERNAME + " TEXT, " + COL_ID_SEWA + " INTEGER, " +
                 "" + COL_HARGA + " TEXT, " + COL_HARGA_TOTAL +
