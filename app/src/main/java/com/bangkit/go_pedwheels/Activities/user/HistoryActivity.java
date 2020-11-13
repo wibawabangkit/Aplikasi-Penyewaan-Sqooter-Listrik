@@ -15,8 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.bangkit.go_pedwheels.Activities.admin.DetilSewaActivity;
-import com.bangkit.go_pedwheels.Activities.admin.HistoryAdmin;
 import com.bangkit.go_pedwheels.Model.HistoryModel;
 import com.bangkit.go_pedwheels.R;
 import com.bangkit.go_pedwheels.Adapter.HistoryAdapter;
@@ -75,7 +73,7 @@ public class HistoryActivity extends AppCompatActivity {
                 ID_Sewa = !cursor.getString(0).isEmpty() ? cursor.getString(0) : "";
                 Waktu = cursor.getString(4);
                 tanggal = cursor.getString(3);
-                total =cursor.getString(11);
+                total =cursor.getString(12);
                 riwayat = "Berhasil melakukan penyewaan dengan waktu sewa " + Waktu + " Menit pada tanggal " + tanggal + ". ";
                 hasil.add(new HistoryModel(ID_Sewa, tanggal, riwayat, total, R.drawable.profile));
             }

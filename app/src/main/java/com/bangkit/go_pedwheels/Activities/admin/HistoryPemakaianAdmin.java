@@ -15,8 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.bangkit.go_pedwheels.Activities.user.DetilPemakaian;
-
 import com.bangkit.go_pedwheels.Adapter.HistoryAdapter;
 import com.bangkit.go_pedwheels.Adapter.HistoryPemakaianAdapter;
 import com.bangkit.go_pedwheels.Database.DatabaseHelper;

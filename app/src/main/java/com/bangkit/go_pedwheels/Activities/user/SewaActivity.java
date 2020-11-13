@@ -38,8 +38,9 @@ public class SewaActivity extends AppCompatActivity {
     String email;
     int ID_Sewa;
     int jml;
+    int  harga;
     public String sUsia, sBerat, sWaktu, sTanggal;
-    int harga, hargaTotal;
+    int hargaTotal;
     private EditText etTanggal;
     private DatePickerDialog dpTanggal;
     Calendar newCalendar = Calendar.getInstance();
@@ -206,40 +207,141 @@ public class SewaActivity extends AppCompatActivity {
     public void perhitunganHarga() {
         if (sUsia.equalsIgnoreCase("8-15") && sBerat.equalsIgnoreCase("40-50")) {
             harga = 15000;
+            if(sWaktu.equalsIgnoreCase("30")){
+                jml = harga/2;
+            } else if(sWaktu.equalsIgnoreCase("60")) {
+                jml = harga;
+            } else if (sWaktu.equalsIgnoreCase("90")){
+                jml = harga + ( harga / 2 );
+            }
         } else if (sUsia.equalsIgnoreCase("8-15") && sBerat.equalsIgnoreCase("50-55")) {
             harga = 15000;
+            if(sWaktu.equalsIgnoreCase("30")){
+                jml = harga/2;
+            } else if(sWaktu.equalsIgnoreCase("60")) {
+                jml = harga;
+            } else if (sWaktu.equalsIgnoreCase("90")){
+                jml = harga + ( harga / 2 );
+            }
         } else if (sUsia.equalsIgnoreCase("8-15") && sBerat.equalsIgnoreCase("55-60")) {
             harga = 15000;
+            if(sWaktu.equalsIgnoreCase("30")){
+                jml = harga/2;
+            } else if(sWaktu.equalsIgnoreCase("60")) {
+                jml = harga;
+            } else if (sWaktu.equalsIgnoreCase("90")){
+                jml = harga + ( harga / 2 );
+            }
         } else if (sUsia.equalsIgnoreCase("8-15") && sBerat.equalsIgnoreCase("60-65")) {
             harga = 20000;
+            if(sWaktu.equalsIgnoreCase("30")){
+                jml = harga/2;
+            } else if(sWaktu.equalsIgnoreCase("60")) {
+                jml = harga;
+            } else if (sWaktu.equalsIgnoreCase("90")){
+                jml = harga + ( harga / 2 );
+            }
         } else if (sUsia.equalsIgnoreCase("8-15") && sBerat.equalsIgnoreCase("65-70")) {
             harga = 20000;
+            if(sWaktu.equalsIgnoreCase("30")){
+                jml = harga/2;
+            } else if(sWaktu.equalsIgnoreCase("60")) {
+                jml = harga;
+            } else if (sWaktu.equalsIgnoreCase("90")){
+                jml = harga + ( harga / 2 );
+            }
         } else if (sUsia.equalsIgnoreCase("16-30") && sBerat.equalsIgnoreCase("40-50")) {
             harga = 15000;
+            if(sWaktu.equalsIgnoreCase("30")){
+                jml = harga/2;
+            } else if(sWaktu.equalsIgnoreCase("60")) {
+                jml = harga;
+            } else if (sWaktu.equalsIgnoreCase("90")){
+                jml = harga + ( harga / 2 );
+            }
         } else if (sUsia.equalsIgnoreCase("16-30") && sBerat.equalsIgnoreCase("50-55")) {
             harga = 15000;
+            if(sWaktu.equalsIgnoreCase("30")){
+                jml = harga/2;
+            } else if(sWaktu.equalsIgnoreCase("60")) {
+                jml = harga;
+            } else if (sWaktu.equalsIgnoreCase("90")){
+                jml = harga + ( harga / 2 );
+            }
         } else if (sUsia.equalsIgnoreCase("16-30") && sBerat.equalsIgnoreCase("55-60")) {
             harga = 15000;
+            if(sWaktu.equalsIgnoreCase("30")){
+                jml = harga/2;
+            } else if(sWaktu.equalsIgnoreCase("60")) {
+                jml = harga;
+            } else if (sWaktu.equalsIgnoreCase("90")){
+                jml = harga + ( harga / 2 );
+            }
         } else if (sUsia.equalsIgnoreCase("16-30") && sBerat.equalsIgnoreCase("60-65")) {
             harga = 20000;
+            if(sWaktu.equalsIgnoreCase("30")){
+                jml = harga/2;
+            } else if(sWaktu.equalsIgnoreCase("60")) {
+                jml = harga;
+            } else if (sWaktu.equalsIgnoreCase("90")){
+                jml = harga + ( harga / 2 );
+            }
         } else if (sUsia.equalsIgnoreCase("16-30") && sBerat.equalsIgnoreCase("65-70")) {
             harga = 20000;
+            if(sWaktu.equalsIgnoreCase("30")){
+                jml = harga/2;
+            } else if(sWaktu.equalsIgnoreCase("60")) {
+                jml = harga;
+            } else if (sWaktu.equalsIgnoreCase("90")){
+                jml = harga + ( harga / 2 );
+            }
         }else if (sUsia.equalsIgnoreCase("31-60") && sBerat.equalsIgnoreCase("40-50")) {
             harga = 15000;
+            if(sWaktu.equalsIgnoreCase("30")){
+                jml = harga/2;
+            } else if(sWaktu.equalsIgnoreCase("60")) {
+                jml = harga;
+            } else if (sWaktu.equalsIgnoreCase("90")){
+                jml = harga + ( harga / 2 );
+            }
         } else if (sUsia.equalsIgnoreCase("31-60") && sBerat.equalsIgnoreCase("50-55")) {
             harga = 15000;
+            if(sWaktu.equalsIgnoreCase("30")) {
+                jml = harga/2;
+            } else if(sWaktu.equalsIgnoreCase("60")) {
+                jml = harga;
+            } else if (sWaktu.equalsIgnoreCase("90")) {
+                jml = harga + ( harga / 2 );
+            }
         } else if (sUsia.equalsIgnoreCase("31-60") && sBerat.equalsIgnoreCase("55-60")) {
             harga = 15000;
+            if(sWaktu.equalsIgnoreCase("30")) {
+                jml = harga/2;
+            } else if(sWaktu.equalsIgnoreCase("60")) {
+                jml = harga;
+            } else if (sWaktu.equalsIgnoreCase("90")){
+                jml = harga + ( harga / 2 );
+            }
         } else if (sUsia.equalsIgnoreCase("31-60") && sBerat.equalsIgnoreCase("60-65")) {
             harga = 20000;
+            if(sWaktu.equalsIgnoreCase("30")) {
+                jml = harga/2;
+            } else if(sWaktu.equalsIgnoreCase("60")) {
+                jml = harga;
+            } else if (sWaktu.equalsIgnoreCase("90")) {
+                jml = harga + ( harga / 2 );
+            }
         } else if (sUsia.equalsIgnoreCase("31-60") && sBerat.equalsIgnoreCase("65-70")) {
             harga = 20000;
+            if(sWaktu.equalsIgnoreCase("30")){
+                jml = harga/2;
+            } else if(sWaktu.equalsIgnoreCase("60")) {
+                jml = harga;
+            } else if (sWaktu.equalsIgnoreCase("90")){
+                jml = harga + ( harga / 2 );
+            }
         }
-
-
-        jml = Integer.parseInt(String.valueOf(1));
-        //perhitungan harga
-        hargaTotal = jml * harga;
+        hargaTotal = jml ;
     }
 
           //set tanggal

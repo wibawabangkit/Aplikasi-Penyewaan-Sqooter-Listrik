@@ -14,12 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.admin.InsertPemakaian"/>
+        <activity android:name=".Activities.admin.DetilPemakaian"></activity>
+        <activity android:name=".Activities.admin.InsertPemakaian" />
         <activity android:name=".Activities.admin.HistoryPemakaianAdmin" />
         <activity android:name=".Activities.user.DetilPemakaian" />
         <activity android:name=".Activities.user.HistoryPemakaian" />
         <activity android:name=".Activities.admin.TotalSewaActivity" />
-        <activity android:name=".Activities.admin.DetilSewaActivity" />
+        <activity android:name=".Activities.user.DetilSewaActivity" />
         <activity android:name=".Activities.user.WA_Activity" />
         <activity android:name=".Activities.user.KonfirmasiActivity" />
         <activity android:name=".Activities.admin.HistoryAdmin" />

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/biru"
     android:padding="30sp"
-    tools:context=".Activities.user.DetilSewaActivity">
+    tools:context=".Activities.admin.DetilPemakaian">
 
 
     <LinearLayout
@@ -35,7 +35,7 @@
                 android:drawableLeft="@drawable/ic_create_black_24dp"
                 android:text="ID Sewa" />
             <TextView
-                android:id="@+id/value_idsewa"
+                android:id="@+id/value_idsewaaa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -59,7 +59,7 @@
                 android:drawableStart="@drawable/ic_baseline_motorcycle_24"
                 android:text="Kerusakan" />
             <TextView
-                android:id="@+id/value_rusak"
+                android:id="@+id/value_rusakkk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -83,7 +83,7 @@
                 android:drawableStart="@drawable/ic_date_range_black_24dp"
                 android:text="Tanggal Penyewaan " />
             <TextView
-                android:id="@+id/value_tanggalpakai"
+                android:id="@+id/value_tanggalpakaiii"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -107,7 +107,7 @@
                 android:drawableStart="@drawable/ic_baseline_av_timer_24"
                 android:text="Durasi Penyewaan (Menit) " />
             <TextView
-                android:id="@+id/value_waktupakai"
+                android:id="@+id/value_waktupakaiii"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -130,7 +130,7 @@
                 android:drawableStart="@drawable/ic_baseline_check_24"
                 android:text="Hasil " />
             <TextView
-                android:id="@+id/value_hasil"
+                android:id="@+id/value_hasilll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -143,7 +143,7 @@
                 android:background="@color/white"/>
 
             <Button
-                android:id="@+id/BACK"
+                android:id="@+id/backbranda"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
